@@ -1,17 +1,22 @@
-import "./App.css";
 import { useEffect, useState } from "react";
+import "./App.css";
 
-const MY_KEY = "a04733881564ce87dec2bbdcfb9fe4ca";
-const MY_ID = "5bbd2eed";
+
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 export default function App() {
   useEffect(async () => {
-    const response = await fetch(
-      `https://api.edamam.com/search?q=avocado&app_id=${MY_ID}&app_key=${MY_KEY}`
-    );
+    const response = await fetch(BASE_URL);
     const data = await response.json();
     console.log(data.hits);
   }, []);
+
+  console.log(process.env);
+
+  const myRecepeSearch = (e) => {
+    e.preventDefault();
+    console.log(e.target.value);
+  };
 
   return (
     <div className="App">
@@ -27,7 +32,12 @@ export default function App() {
       </div>
       <div className="container">
         <form>
-          <input type="text" className="search" />
+          <input
+            type="text"
+            className="search"
+            placeholder="Search..."
+            onChange={myRecepeSearch}
+          />
         </form>
         <div className="container">
           <button>
