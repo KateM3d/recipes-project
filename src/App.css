@@ -19,7 +19,7 @@ video {
 
 .search {
     width: 100%;
-    padding: 12px 24px;
+    padding: 19px 24px;
     background-color: transparent;
     font-size: 14px;
     line-height: 18px;
@@ -27,4 +27,17 @@ video {
     background-color: transparent;
     margin-left: 0px;
     box-shadow: inset 0px 0px 0px 4px #ddd6e8;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+li {
+    display: block;
+    padding: 0.4em 0.4em 0.4em 0.8em;
+    margin: 0.5em 0 0.5em 2.5em;
+    background: #ddd6e8;
 }
