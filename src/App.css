@@ -1,58 +1,30 @@
-.apptitle {
-    margin: 1rem 0;
-    color: #ff2968;
+video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
 }
 
-.todolist {
-    padding-left: 0;
-    .todoitem {
-        position: relative;
-        margin-bottom: 0.25rem;
-        padding: 0.5rem 2rem 0.5rem 0.5rem;
-        border-top: 1px solid #ccc;
-        &.done {
-            .form-check-label {
-                color: #999;
-                text-decoration: line-through;
-            }
-        }
-        &.highlight {
-            border-color: #ff2968;
-            background-color: #ff8fb0;
-            &:last-child {
-                border-color: #ff2968;
-            }
-        }
-        &:last-child {
-            border-bottom: 1px solid #ccc;
-        }
-        .btn-danger {
-            position: absolute;
-            top: 0.5rem;
-            right: 0.5rem;
-        }
-        .form-check-label {
-            width: 100%;
-            .form-check-input {
-                margin-right: 1rem;
-            }
-        }
-    }
+.App {
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
-.container-fluid {
-    padding: 2rem;
+.container {
+    display: flex;
+    justify-content: center;
 }
 
-h4 {
-    margin-bottom: 20px;
-}
-
-.crossed {
-    text-decoration: line-through;
-    background-color: red;
-}
-
-li {
-    font-size: 30px;
+.search {
+    width: 100%;
+    padding: 12px 24px;
+    background-color: transparent;
+    font-size: 14px;
+    line-height: 18px;
+    color: #575756;
+    background-color: transparent;
+    margin-left: 0px;
+    box-shadow: inset 0px 0px 0px 4px #ddd6e8;
 }

@@ -1,131 +1,43 @@
 import "./App.css";
-import { useState } from "react";
-import TodoApp from "./TodoApp";
+import { useEffect, useState } from "react";
+
+const MY_KEY = "a04733881564ce87dec2bbdcfb9fe4ca";
+const MY_ID = "5bbd2eed";
 
 export default function App() {
+  useEffect(async () => {
+    const response = await fetch(
+      `https://api.edamam.com/search?q=avocado&app_id=${MY_ID}&app_key=${MY_KEY}`
+    );
+    const data = await response.json();
+    console.log(data.hits);
+  }, []);
+
   return (
-    <>
-      <TodoApp />
-    </>
+    <div className="App">
+      <div className="container">
+        <video autoPlay muted loop>
+          <source
+            src="https://files.cdn.thinkific.com/file_uploads/397660/attachments/90d/92f/4be/food.mp4"
+            type="video/mp4"
+          />
+        </video>
+
+        <h1>Find a Recipe</h1>
+      </div>
+      <div className="container">
+        <form>
+          <input type="text" className="search" />
+        </form>
+        <div className="container">
+          <button>
+            <img
+              src="https://img.icons8.com/fluency/48/00000/fry.png"
+              alt="search"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
-
-// function TodoItem(props) {
-//   let itemClass =
-//     "form-check todoitem " + (props.completed ? "done" : "undone");
-//   return (
-//     <>
-//       <li className={itemClass} ref={(li) => (props._listItem = li)}>
-//         <label className="form-check-label">
-//           <input
-//             type="checkbox"
-//             className="form-check-input"
-//             onChange={props.markCompleted}
-//           />
-//           {props.text}
-//         </label>
-//         <button
-//           type="button"
-//           className="btn btn-danger btn-sm"
-//           onClick={props.deleteItem}
-//         >
-//           x
-//         </button>
-//       </li>
-//     </>
-//   );
-// }
-//
-// function TodoList(props) {
-//   return (
-//     <>
-//       <ul className="todolist">
-//         {props.items.map((item) => (
-//           <TodoItem
-//             key={item}
-//             text={item.text}
-//             completed={item.done}
-//             onItemCompleted={props.onItemCompleted}
-//             onDeleteItem={props.onDeleteItem}
-//           />
-//         ))}
-//       </ul>
-//     </>
-//   );
-// }
-//
-// export default function TodoApp() {
-//   const [items, setItems] = useState([]);
-//   const [text, setText] = useState("");
-//   const [completed, setCompleted] = useState(false);
-//
-//   const handleTextChange = (e) => {
-//     setText(e.target.value);
-//   };
-//   const handleAddItem = (e) => {
-//     e.preventDefault();
-//
-//     // let newItem = {
-//     //   id: Date.now(),
-//     //   text: text,
-//     //   done: false,
-//     // };
-//     setItems([text]);
-//     setText("");
-//     // setItems((prevState) => prevState.items.concat(newItem.text));
-//   };
-//   console.log(items);
-//
-//   const markItemCompleted = (itemId) => {
-//     let updatedItems = items.map((item) => {
-//       if (itemId === item.id) item.done = !item.done;
-//       return item;
-//     });
-//
-//     // State Updates are Merged
-//     setItems([].concat(updatedItems));
-//   };
-//   const handleDeleteItem = (itemId) => {
-//     let updatedItems = items.filter((item) => {
-//       return item.id !== itemId;
-//     });
-//
-//     setItems([].concat(updatedItems));
-//   };
-//
-//   return (
-//     <>
-//       <div>
-//         <h3 className="apptitle">TO DO LIST</h3>
-//         <div className="row">
-//           <div className="col-md-3">
-//             <TodoList
-//               items={items}
-//               onItemCompleted={markItemCompleted}
-//               onDeleteItem={handleDeleteItem}
-//             />
-//           </div>
-//         </div>
-//         <form className="row">
-//           <div className="col-md-3">
-//             <input
-//               type="text"
-//               className="form-control"
-//               onChange={handleTextChange}
-//               value={text}
-//             />
-//           </div>
-//           <div className="col-md-3">
-//             <button
-//               className="btn btn-primary"
-//               onClick={handleAddItem}
-//               disabled={!text}
-//             >
-//               {"Add #" + (items.length + 1)}
-//             </button>
-//           </div>
-//         </form>
-//       </div>
-//     </>
-//   );
-// }
